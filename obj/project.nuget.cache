@@ -1,10 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "qzU7OcRUgYA=",
+  "dgSpecHash": "9rAc9F2yLtw=",
   "success": true,
   "projectFilePath": "/Users/laura/CloudComputing-CosmosDB/SupportWebApp/SupportWebApp.csproj",
   "expectedPackageFiles": [
-    "/Users/laura/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.2/microsoft.aspnetcore.app.internal.assets.10.0.2.nupkg.sha512"
+    "/Users/laura/.nuget/packages/azure.core/1.62.0/azure.core.1.62.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/azure.data.tables/12.13.0/azure.data.tables.12.13.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.aspnetcore.app.internal.assets/10.0.2/microsoft.aspnetcore.app.internal.assets.10.0.2.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.azure.cosmos/3.63.1/microsoft.azure.cosmos.3.63.1.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.bcl.asyncinterfaces/10.0.10/microsoft.bcl.asyncinterfaces.10.0.10.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.identity.client/4.84.2/microsoft.identity.client.4.84.2.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.identity.client.extensions.msal/4.84.2/microsoft.identity.client.extensions.msal.4.84.2.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
+    "/Users/laura/.nuget/packages/system.clientmodel/1.15.0/system.clientmodel.1.15.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/system.configuration.configurationmanager/6.0.0/system.configuration.configurationmanager.6.0.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/system.drawing.common/6.0.0/system.drawing.common.6.0.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/system.memory.data/10.0.10/system.memory.data.10.0.10.nupkg.sha512",
+    "/Users/laura/.nuget/packages/system.security.cryptography.protecteddata/6.0.0/system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/system.security.permissions/6.0.0/system.security.permissions.6.0.0.nupkg.sha512",
+    "/Users/laura/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
