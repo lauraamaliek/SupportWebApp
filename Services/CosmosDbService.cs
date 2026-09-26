@@ -24,4 +24,20 @@ public class CosmosDbService
             item: message,
             partitionKey: new PartitionKey(message.Category));
     }
+    
+    public async Task<List<SupportMessage>> GetAllSupportMessagesAsync()
+    {
+        var results = new List<SupportMessage>();
+
+        using FeedIterator<SupportMessage> iterator = _container.GetItemQueryIterator<SupportMessage>(
+            queryText: "SELECT * FROM c ORDER BY c.dateTime DESC");
+
+        while (iterator.HasMoreResults)
+        {
+            FeedResponse<SupportMessage> response = await iterator.ReadNextAsync();
+            results.AddRange(response);
+        }
+
+        return results;
+    }
 }

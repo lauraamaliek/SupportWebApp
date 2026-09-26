@@ -1,36 +1,36 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace SupportWebApp.Models;
 
 public class SupportMessage
 {
-    [JsonPropertyName("id")]
+    [JsonProperty("id")]
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
     [Required(ErrorMessage = "Navn er påkrævet")]
-    [JsonPropertyName("name")]
+    [JsonProperty("name")]
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Email er påkrævet")]
     [EmailAddress(ErrorMessage = "Ugyldig emailadresse")]
-    [JsonPropertyName("email")]
+    [JsonProperty("email")]
     public string Email { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Telefon er påkrævet")]
     [Phone(ErrorMessage = "Ugyldigt telefonnummer")]
-    [JsonPropertyName("phone")]
+    [JsonProperty("phone")]
     public string Phone { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Beskrivelse er påkrævet")]
-    [JsonPropertyName("description")]
+    [JsonProperty("description")]
     public string Description { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Kategori er påkrævet")]
-    [JsonPropertyName("category")]
+    [JsonProperty("category")]
     public string Category { get; set; } = string.Empty;
 
-    [JsonPropertyName("dateTime")]
+    [JsonProperty("dateTime")]
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 }

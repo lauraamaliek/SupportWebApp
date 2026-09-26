@@ -1,4 +1,5 @@
 @page "/create-support"
+@using System.ComponentModel.DataAnnotations
 @using SupportWebApp.Models
 @using SupportWebApp.Services
 @inject CosmosDbService CosmosDb
@@ -7,37 +8,37 @@
 
 <h1>Opret support-henvendelse</h1>
 
-<EditForm Model="message" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="Message" OnValidSubmit="Submit" FormName="CreateSupportForm">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="mb-3">
         <label for="name" class="form-label">Navn</label>
-        <InputText id="name" class="form-control" @bind-Value="message.Name" />
-        <ValidationMessage For="() => message.Name" />
+        <InputText id="name" class="form-control" @bind-Value="Message!.Name" />
+        <ValidationMessage For="() => Message.Name" />
     </div>
 
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <InputText id="email" class="form-control" @bind-Value="message.Email" />
-        <ValidationMessage For="() => message.Email" />
+        <InputText id="email" class="form-control" @bind-Value="Message!.Email" />
+        <ValidationMessage For="() => Message.Email" />
     </div>
 
     <div class="mb-3">
         <label for="phone" class="form-label">Telefon</label>
-        <InputText id="phone" class="form-control" @bind-Value="message.Phone" />
-        <ValidationMessage For="() => message.Phone" />
+        <InputText id="phone" class="form-control" @bind-Value="Message!.Phone" />
+        <ValidationMessage For="() => Message.Phone" />
     </div>
 
     <div class="mb-3">
         <label for="description" class="form-label">Beskrivelse</label>
-        <InputTextArea id="description" class="form-control" @bind-Value="message.Description" />
-        <ValidationMessage For="() => message.Description" />
+        <InputTextArea id="description" class="form-control" @bind-Value="Message!.Description" />
+        <ValidationMessage For="() => Message.Description" />
     </div>
 
     <div class="mb-3">
         <label for="category" class="form-label">Kategori</label>
-        <InputSelect id="category" class="form-control" @bind-Value="message.Category">
+        <InputSelect id="category" class="form-control" @bind-Value="Message!.Category">
             <option value="">-- Vælg kategori --</option>
             <option value="Teknisk">Teknisk</option>
             <option value="Reservedele">Reservedele</option>
@@ -46,7 +47,7 @@
             <option value="Katalog">Katalog</option>
             <option value="Andet">Andet</option>
         </InputSelect>
-        <ValidationMessage For="() => message.Category" />
+        <ValidationMessage For="() => Message.Category" />
     </div>
 
     <button type="submit" class="btn btn-primary">Opret henvendelse</button>
@@ -58,13 +59,19 @@
 }
 
 @code {
-    private SupportMessage message = new();
+    [SupplyParameterFromForm]
+    private SupportMessage? Message { get; set; }
+
     private bool submitted = false;
 
-    private async Task HandleValidSubmit()
+    protected override void OnInitialized() => Message ??= new();
+
+    private async Task Submit()
     {
-        await CosmosDb.CreateSupportMessageAsync(message);
+        Message!.Id = Guid.NewGuid().ToString();
+        Message.Timestamp = DateTime.UtcNow;
+        await CosmosDb.CreateSupportMessageAsync(Message);
         submitted = true;
-        message = new SupportMessage(); // nulstil formularen til en ny henvendelse
+        Message = new SupportMessage();
     }
 }
