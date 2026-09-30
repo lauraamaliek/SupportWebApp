@@ -31,7 +31,7 @@ som datalager for kundehenvendelser.
 Databasen kan genskabes fra bunden med følgende Azure CLI-kommandoer:
 
 ```bash
-az group create --name IBasSupportRG --location westeurope
+az group create --name IBasSupportRG --location swedenCentral 
 
 export DBACCOUNT="ibas-db-account"-$RANDOM
 export RESGRP="IBasSupportRG"
@@ -50,8 +50,7 @@ az cosmosdb sql container create --account-name $DBACCOUNT \
 > På Windows skal `--partition-key-path` skrives med dobbelt skråstreg (`"//category"`).
 
 Connection stringen findes i Azure Portal under CosmosDB-kontoen → **Keys** →
-**PRIMARY CONNECTION STRING**, og skal sættes lokalt med User Secrets (aldrig i
-`appsettings.json` eller git):
+**PRIMARY CONNECTION STRING**, og er sat lokalt med User Secrets for at undgå følsomme oplysninger i git:
 
 ```bash
 dotnet user-secrets init
